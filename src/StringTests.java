@@ -1,5 +1,5 @@
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -9,9 +9,12 @@ class StringTests {
 	@Test
 	void compareToTest() {
 		String str = "hello";
+		assertEquals(0, str.compareTo(str));
 		assertEquals(0, str.compareTo("hello"));
 		assertEquals(-3, str.compareTo("helo"));
+		assertTrue(str.compareTo("helo") < 0);
 		assertEquals(-1, str.compareTo("helloo"));
+		assertTrue(str.compareTo("hell") > 0);
 	}
 
 	@Test
@@ -36,6 +39,7 @@ class StringTests {
 	@Test
 	void startsWithTest() {
 		String str = "hello";
+		assertTrue(str.startsWith(str));
 		assertTrue(str.startsWith("h"));
 		assertTrue(str.startsWith("he"));
 		assertFalse(str.startsWith("H"));
